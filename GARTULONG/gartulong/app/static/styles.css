@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("C:/Users/efern/Downloads/BG2.jpeg"); /* Adjust the path to your image */
+    background-size: cover;
+    background-position: center;
+}
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

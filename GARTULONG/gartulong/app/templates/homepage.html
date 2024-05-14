@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+        }
+
+        .section-main {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-main .tagline {
+            text-align: center;
+        }
+
+        .section-main h1 {
+            color: white;
+            font-family: 200px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 80px;
+        }
+        .section-main h4 {
+            color: rgb(54, 54, 54);
+            text-transform: uppercase;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        header {
+            z-index: 999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 250px;
+            transform: 0.6s;
+        }
+
+        header img {
+            width: 100px;
+            height: 70px;
+        }
+        header.sticky {
+            background: #0A142F;
+            padding: 15px 250px;
+        }
+
+        header .menu {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: 2px solid #4CAF4F;
+            color: white;
+            margin-left: 20px;
+            border-radius: 10px;
+            padding: 10px;
+            width: 90px;
+            transition-duration: 0.4s;   
+        }
+
+        button:hover {
+            background-color: #4CAF4F;
+            color: white;
+        }
+
+        header a{
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            margin: 0 30px;
+            padding: 0 15px;
+            border-radius: 25px;
+            transition: 0.3s;
+            transition-property: color, background;
+        }
+
+        header a:hover {
+            color: #000;
+            background: #fff;
+        }
+
+        header.btn {
+            color: #fff;
+            font-size: 25px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .service {
+            position: relative;
+            width: 100%;
+            min-height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .service div {
+            text-align: center;
+        }
+
+        #div1 {
+            width: 33.33%;
+            float: right; 
+        }
+        #div1 img {
+            width: 50px;
+            height: 50px;
+            fill: #4CAF4F !important;
+        }
+        #div2 {
+            width: 33.33%;
+            float: left;
+        }
+
+        #div2 img {
+            width: 50px;
+            height: 50px;
+            fill: #4CAF4F !important;
+        }
+
+        #div3 {
+            width: 33.33%;
+            margin: 0 auto;
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+
+        #div3 img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .service div h2 {
+            margin-bottom: 30px;
+            text-transform: uppercase;
+
+        }
+
+        .service div h3 {
+            margin-bottom: 10px;
+            font-style: italic;
+            font-size: 20px;
+        }
+        .service div h4 {
+        letter-spacing: 1.5px;
+        font-weight: 300;
+        font-size: 14px;
+        }
+
+        /* Feature Section*/
+        .feature {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            display: flex;
+            align-items: top;
+            margin-top: 20px;
+            padding: 50px 0;
+        }
+
+        #postservice {
+            width: 50%;
+            float: left;
+        }
+
+        #acceptservice {
+            width: 50%;
+            float: right;
+        }
+
+        .feature-container {
+            max-width: 1300px;
+            background-color:#0A142F;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature h2 {
+            margin-bottom: 50px;
+            color: white;
+            text-transform: uppercase;
+            line-height: 2px;
+        }
+
+        .feature-item {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .feature-item h3 {
+            color: white;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+
+        }
+
+        .feature-item p {
+            color: white;
+        }
+
+        .feature .feature-buttons {
+            margin-top: 50px;
+            background-color: #4CAF4F;
+            border: 2px white;
+            padding: 10px;
+        }
+
+        .feature-buttons:hover {
+            background-color: #6c6c6c;
+        }
+
+        /* FAQ Section */
+        .faq {
+            width: 100%;
+            min-height: 50vh;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .faq-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .faq-item {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .question {
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .answer {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        /* Review Section */
+        .review-section {
+            width: 100%;
+            min-height: 50vh;
+            background: #0A142F;
+            color: white;
+            position: relative;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 20px; 
+        }
+
+        .review-section h2 {
+            padding: 20px;
+        }
+
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto; 
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .review {
+            flex: 0 0 auto;
+            width: 100%;
+            min-height: 50%;
+            padding: 100px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: white; 
+            border-radius: 8px; 
+            margin-right: 20px; 
+            color: #0A142F; 
+        }
+
+        /* Ratings */
+        .rating {
+            color:#4CAF4F; /* Star Color */
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Next & Previous Buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            z-index: 1;
+            top: 50%;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+        }
+
+        /* Post Review Button */
+        .post-review {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4CAF4F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .post-review:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Section */
+        footer{
+            background: #0A142F;
+            margin-top: 20px;
+            padding-top: 50px;
+            color: white;
+        }
+        .footer-section{
+            width: 1140px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+        .footer-content{
+            width: 33.3%;
+        }
+
+        footer h3{
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .footer-content p{
+            width:190px;
+            margin: auto;
+            padding: 7px;
+        }
+        .footer-content ul{
+            text-align: center;
+        }
+        .list{
+            padding: 0;
+        }
+        .list li{
+            width: auto;
+            text-align: center;
+            list-style-type:none;
+            padding: 7px;
+            position: relative;
+        }
+
+        .list li a {
+            color: white;
+        }
+        .list li::before{
+            content: '';
+            position: absolute;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 100%;
+            width: 0;
+            height: 2px;
+            background: #4CAF4F;
+            transition-duration: .5s;
+        }
+        .list li:hover::before{
+            width: 70px;
+        }
+        .social-icons{
+            text-align: center;
+            padding: 0;
+        }
+        .social-icons li{
+            display: inline-block;
+            text-align: center;
+            padding: 5px;
+        }
+        .social-icons i{
+            color: white;
+            font-size: 25px;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            color: #4CAF4F;
+        }
+        .social-icons i:hover{
+            color: #4CAF4F;
+        }
+        .bottom-bar{
+            background: #4CAF4F;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+        .bottom-bar p{
+            color: #343434;
+            margin: 0;
+            font-size: 16px;
+            padding: 7px;
+        }
+
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 999;
+            text-align: left; /* Align the text areas to the left */
+            max-width: 500px; /* Set a max-width for better layout */
+            width: 100%; /* Ensure the form takes full width up to max-width */
+        }
+
+        .popup-form h2 {
+            text-transform: capitalize;
+            margin-bottom: 10px;
+        }
+
+        /* Center the form contents */
+        .popup-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch; /* Align items to stretch to full width */
+        }
+
+
+
+        /* Align the input fields to the left */
+        .popup-form label,
+        .popup-form input,
+        .popup-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        /* Center the buttons and keep them in a row */
+        .popup-form .buttons {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        /* Add space between buttons */
+        .popup-form .buttons button {
+            margin: 0 5px;
+            background-color: #4CAF4F;
+            color: white;
+        }
+
+        /* Styles for the overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            z-index: 998; 
+        }
+
+
+        .popup-form button:hover {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device=width, initial-scale=1.0">
+        <title>Landing Page</title>
+        {% load static %}
+        <link rel="stylesheet" href="{ % static 'style.css' }">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body>
+        <header>
+            {% load static %}
+            <img src="{% static 'GarTulong Logo.svg' %}" alt="GarTulong">
+            
+            <a href="#">Home</a>
+            <a href="#service">Service</a>
+            <a href="#feature">Feature</a>
+            <a href="#faqs">FAQS</a>
+            <a href="#reviews">Reviews</a>
+            <a href=""></a><button>Login</button>
+            <button>Signup</button>
+            <div class="btn">
+                <i class="fas fa-bars menu-btn"></i>
+            </div>
+        </header>
+        
+        
+        <section class="section-main">
+            {% load static %}
+            <img src="{% static 'BG2.jpeg' %}" alt="" class="bg-image">
+            <div class="tagline">
+                <h1>Streamline Your Tasks, Connect Seamlessly, Where Skill Meets Need</h1>
+                <h4>Task Delegation Perfected, Where Efficiency Meets Expertise in a Click</h4>
+            </div>
+        </section>
+
+        <section class="service" id="service">
+            <div><h2>What does GARTULONG offers?</h2>
+            <div id="div1">
+                {% load static %}
+                <img src="{% static 'Freelancer.svg' %}" alt="Freelancer">
+                <h3>Skills Meet Opportunities</h3>
+                <h4>Our platform brings together a diverse community of skilled freelancers ready to provide their expertise to those seeking services. 
+                    We connect them on clients in need of specialized assistance, we seamlessly connects you with the right talent.</h4>
+            </div>
+            <div id="div2">
+                {% load static %}
+                <img src="{% static 'Business.svg' %}" alt="Business">
+                <h3>Bridging Businesses to Clients</h3>
+                <h4>We connect clients with a network of trusted businesses offering comprehensive packages such as catering such as catering services and event planning, etc. 
+                    Our platform streamlines the process, providing access to top-notch services tailored to your needs. </h4>
+            </div>
+            <div id="div3">
+                {% load static %}
+                <img src="{% static 'People.svg' %}" alt="People">
+                <h3>Connecting People</h3>
+                <h4>Connecting individuals with reliable helpers for a wide range of needs. Whether you're seeking assistance with household tasks, errands, or specialized services like catering. 
+                Our network of skilled professionals ensures quality service and peace of mind for every client.</h4>
+            </div>
+            </div>            
+        </section>
+
+        <section class="feature" id="feature">
+            <div class="feature-container">
+                <h2>What can you do in GARTULONG?</h2>
+                <div class="feature-item" id="postservice">
+                    <h3>Post a service</h3>
+                    <p>Are you a person who are need of help? Household Chores? Simple Errands? Or specialized Services? 
+                       You can post your services to find help for your problem. We will connect you to skilled and talented individuals to provide your service.</p>
+                    <button class="feature-buttons">POST</button>
+                </div>
+                <div class="feature-item" id="acceptservice">
+                    <h3>Apply to a service</h3>
+                    <p>Looking for opportunities to apply your skills? Browse through the listings apply for services that match your expertise. Whether it's a freelance project, a job opportunity, or a task posted by individuals in need of assistance, 
+                       we will connect you with opportunities to showcase your talents and skills to earn income.</p>
+                       <button class="feature-buttons">APPLY</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" id="faqs">
+            <h2>Frequently Asked Question</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="question">What is Gartulong?</div>
+                    <div class="answer">Gartulong is a online platform where you can post a commission and others will apply to it either a professional or normal person who just wants to earn. </div>
+                <div class="faq-item">
+                    <div class="question">How does payment works?</div>
+                    <div class="answer">It depends on the agreement between the client and the applicant.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="question">How do I ensure the quality of work from applicants?</div>
+                    <div class="answer">To ensure the quality of work from freelancers, you can review their portfolios, check their references or previous client reviews. </div>
+                </div>
+                <div class="faq-item">
+                    <div class="question">How can I find commisions or requests?</div>
+                    <div class="answer">Click the feature in the navigation bar and it will direct you to the section and click the apply button</div>
+                </div>
+                <div class="faq-item">
+                    <div class="question">How to post a commision?</div>
+                    <div class="answer">Click the feature in the navigation bar and it will direct you to the section and click the post button and it will show you form and fill out necessary details.</div>
+            </div>
+        </section>
+
+        <section class="review-section" id="reviews">
+            <h2>Reviews & Ratings</h2>
+            <div class="carousel-container">
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel">
+                    <div class="review">
+                        <h3>Review for Antonio Luna</h3>
+                        <p>Review by: Aguinaldo</p>
+                        <div class="rating">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                        <p>Malupiton bumaril. Asintado isang bala lang ginamit natamaan agad si target. Pero ang sungit kaya 4 star lang.</p>
+                    </div>
+                    <div class="review">
+                        <h3>Review for ABCD Catering Service</h3>
+                        <p>Review by: Zeke Fernando</p>
+                        <div class="rating">&#9733;&#9733;&#9734;&#9734;&#9734;</div>
+                        <p>The food was not tasty. Some are too salty.</p>
+                    </div>
+                    <div class="review">
+                        <h3>Review for Barnie</h3>
+                        <p>Review by: Michael Obama</p>
+                        <div class="rating">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+                        <p>Okay man, I got passing score because of the essay he did. 5 star sana kung perfect nakuha ko.</p>
+                    </div>
+                </div>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+            <a href="#" class="post-review" onclick="showForm()">Post a Review</a>
+        </section>
+    
+        <!-- Pop-up form -->
+        <div id="overlay" class="overlay"></div>
+        <div id="popupForm" class="popup-form">
+            <h2>Post a Review</h2>
+            <form action="#" method="post">
+                <input type="text" id="reviewerName" name="reviewerName" placeholder="Username">
+             
+                <textarea id="reviewText" name="reviewText" rows="4" placeholder="Comments"></textarea>
+                <div class="buttons">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="hideForm()">Close</button>
+                </div>
+            </form>
+        </div>
+    
+        <script>
+    
+            function showForm() {
+                document.getElementById("overlay").style.display = "block";
+                document.getElementById("popupForm").style.display = "block";
+            }
+    
+            function hideForm() {
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("popupForm").style.display = "none";
+            }
+        </script>
+
+        <!-- Carousel Review -->
+        <script>
+            let currentIndex = 0;
+            const slides = document.querySelectorAll('.review');
+        
+            function moveSlide(direction) {
+                currentIndex = (currentIndex + direction + slides.length) % slides.length;
+                const offset = -currentIndex * (slides[0].offsetWidth + 20);
+                document.querySelector('.carousel').style.transform = `translateX(${offset}px)`;
+            }
+        </script>
+        
+        <footer>
+            <div class="footer-section">
+                <div class="footer-content">
+                    <h3>Quick Link</h3>
+                    <ul class="list">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Service</a></li>
+                        <li><a href="">Feature</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-content">
+                    <h3>Contact Us</h3>
+                    <p></p>
+                    <p>Email: gartulong@gmail.com</p>
+                    <p>Phone: +63 9210123456</p>
+                    <p>Address: Ateneo de Naga University</p>
+                </div>
+                <div class="footer-content">
+                    <h3>Follow Us</h3>
+                    <ul class="social-icons">
+                        <li><a href=""><i class="fa">&#xf082;</i></a></li>
+                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>    
+            </div>
+            <div class="bottom-bar">
+                <p>&copy; 2024 Gartulong. All rights reserved</p>
+            </div>
+        </footer>
+
+        <!-- Sticky Navigation Bar -->
+        <script type="text/javascript">
+            window.addEventListener("scroll", function(){
+                var header = document.querySelector("header");
+                header.classList.toggle('sticky',window.scrollY > 0);
+            }); 
+        </script>
+
+        <!-- FAQ Responsive -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const questions = document.querySelectorAll('.question');
+                questions.forEach(function(question) {
+                    question.addEventListener('click', function() {
+                        const answer = this.nextElementSibling;
+                        if (answer.style.display === 'block') {
+                            answer.style.display = 'none';
+                        } else {
+                            answer.style.display = 'block';
+                        }
+                    });
+                });
+            });
+        </script>
+
+        
+    </body>
+</ht
